@@ -1,0 +1,22 @@
+{
+  "name": "stamp-api-client",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "generate": "curl -H 'Accept: application/vnd.github.v3.raw' -O -L https://api.github.com/repos/whkelvin/stamp-api-spec/contents/openapi.yaml && npx openapi-generator-cli generate -i ./openapi.yaml -g typescript-fetch -o ./src --additional-properties=supportsES6=true,npmVersion=6.9.0,typescriptThreePlus=true",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.6.0",
+    "openapi-typescript": "^6.2.1",
+    "typescript": "^5.0.4"
+  }
+}
