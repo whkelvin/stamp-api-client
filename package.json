@@ -8,8 +8,7 @@
   ],
   "scripts": {
     "build": "tsc",
-    "generate": "curl -H 'Accept: application/vnd.github.v3.raw' -O -L https://api.github.com/repos/whkelvin/stamp-api-spec/contents/openapi.yaml && npx openapi-generator-cli generate -i ./openapi.yaml -g typescript-fetch -o ./src --additional-properties=supportsES6=true,npmVersion=6.9.0,typescriptThreePlus=true",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "generate": "curl -H 'Accept: application/vnd.github.v3.raw' -O -L https://api.github.com/repos/whkelvin/stamp-api-spec/contents/openapi.yaml && npx openapi-generator-cli generate -i ./openapi.yaml -g typescript-fetch -o ./src --additional-properties=supportsES6=true,npmVersion=6.9.0,typescriptThreePlus=true"
   },
   "author": "",
   "license": "ISC",
