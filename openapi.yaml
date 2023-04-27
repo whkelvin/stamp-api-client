@@ -99,7 +99,7 @@ components:
         - title
         - description
         - link
-        - postedDate
+        - createdDate
         - rootDomain
       properties:
         id:
@@ -110,7 +110,7 @@ components:
           type: string
         link:
           type: string
-        postedDate:
+        createdDate:
           type: string
         rootDomain:
           type: string

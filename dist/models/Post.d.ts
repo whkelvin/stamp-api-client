@@ -44,7 +44,7 @@ export interface Post {
      * @type {string}
      * @memberof Post
      */
-    postedDate: string;
+    createdDate: string;
     /**
      *
      * @type {string}

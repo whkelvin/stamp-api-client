@@ -48,7 +48,7 @@ export interface Post {
      * @type {string}
      * @memberof Post
      */
-    postedDate: string;
+    createdDate: string;
     /**
      * 
      * @type {string}
@@ -66,7 +66,7 @@ export function instanceOfPost(value: object): boolean {
     isInstance = isInstance && "title" in value;
     isInstance = isInstance && "description" in value;
     isInstance = isInstance && "link" in value;
-    isInstance = isInstance && "postedDate" in value;
+    isInstance = isInstance && "createdDate" in value;
     isInstance = isInstance && "rootDomain" in value;
 
     return isInstance;
@@ -86,7 +86,7 @@ export function PostFromJSONTyped(json: any, ignoreDiscriminator: boolean): Post
         'title': json['title'],
         'description': json['description'],
         'link': json['link'],
-        'postedDate': json['postedDate'],
+        'createdDate': json['createdDate'],
         'rootDomain': json['rootDomain'],
     };
 }
@@ -104,7 +104,7 @@ export function PostToJSON(value?: Post | null): any {
         'title': value.title,
         'description': value.description,
         'link': value.link,
-        'postedDate': value.postedDate,
+        'createdDate': value.createdDate,
         'rootDomain': value.rootDomain,
     };
 }

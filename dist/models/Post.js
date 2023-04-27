@@ -20,7 +20,7 @@ export function instanceOfPost(value) {
     isInstance = isInstance && "title" in value;
     isInstance = isInstance && "description" in value;
     isInstance = isInstance && "link" in value;
-    isInstance = isInstance && "postedDate" in value;
+    isInstance = isInstance && "createdDate" in value;
     isInstance = isInstance && "rootDomain" in value;
     return isInstance;
 }
@@ -36,7 +36,7 @@ export function PostFromJSONTyped(json, ignoreDiscriminator) {
         'title': json['title'],
         'description': json['description'],
         'link': json['link'],
-        'postedDate': json['postedDate'],
+        'createdDate': json['createdDate'],
         'rootDomain': json['rootDomain'],
     };
 }
@@ -52,7 +52,7 @@ export function PostToJSON(value) {
         'title': value.title,
         'description': value.description,
         'link': value.link,
-        'postedDate': value.postedDate,
+        'createdDate': value.createdDate,
         'rootDomain': value.rootDomain,
     };
 }
