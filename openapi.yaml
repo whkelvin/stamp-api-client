@@ -121,7 +121,6 @@ components:
         - posts
         - page
         - pageSize
-        - createdDate
       properties:
         count:
           type: integer
@@ -140,8 +139,6 @@ components:
         pageSize:
           type: integer
           format: int32
-        createdDate:
-          type: string
 
   securitySchemes:
     api_key:

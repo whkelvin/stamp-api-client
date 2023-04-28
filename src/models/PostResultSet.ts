@@ -50,12 +50,6 @@ export interface PostResultSet {
      * @memberof PostResultSet
      */
     pageSize: number;
-    /**
-     * 
-     * @type {string}
-     * @memberof PostResultSet
-     */
-    createdDate: string;
 }
 
 /**
@@ -67,7 +61,6 @@ export function instanceOfPostResultSet(value: object): boolean {
     isInstance = isInstance && "posts" in value;
     isInstance = isInstance && "page" in value;
     isInstance = isInstance && "pageSize" in value;
-    isInstance = isInstance && "createdDate" in value;
 
     return isInstance;
 }
@@ -86,7 +79,6 @@ export function PostResultSetFromJSONTyped(json: any, ignoreDiscriminator: boole
         'posts': ((json['posts'] as Array<any>).map(PostFromJSON)),
         'page': json['page'],
         'pageSize': json['pageSize'],
-        'createdDate': json['createdDate'],
     };
 }
 
@@ -103,7 +95,6 @@ export function PostResultSetToJSON(value?: PostResultSet | null): any {
         'posts': ((value.posts as Array<any>).map(PostToJSON)),
         'page': value.page,
         'pageSize': value.pageSize,
-        'createdDate': value.createdDate,
     };
 }
 

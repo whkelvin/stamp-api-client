@@ -40,12 +40,6 @@ export interface PostResultSet {
      * @memberof PostResultSet
      */
     pageSize: number;
-    /**
-     *
-     * @type {string}
-     * @memberof PostResultSet
-     */
-    createdDate: string;
 }
 /**
  * Check if a given object implements the PostResultSet interface.

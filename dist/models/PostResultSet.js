@@ -21,7 +21,6 @@ export function instanceOfPostResultSet(value) {
     isInstance = isInstance && "posts" in value;
     isInstance = isInstance && "page" in value;
     isInstance = isInstance && "pageSize" in value;
-    isInstance = isInstance && "createdDate" in value;
     return isInstance;
 }
 export function PostResultSetFromJSON(json) {
@@ -36,7 +35,6 @@ export function PostResultSetFromJSONTyped(json, ignoreDiscriminator) {
         'posts': (json['posts'].map(PostFromJSON)),
         'page': json['page'],
         'pageSize': json['pageSize'],
-        'createdDate': json['createdDate'],
     };
 }
 export function PostResultSetToJSON(value) {
@@ -51,7 +49,6 @@ export function PostResultSetToJSON(value) {
         'posts': (value.posts.map(PostToJSON)),
         'page': value.page,
         'pageSize': value.pageSize,
-        'createdDate': value.createdDate,
     };
 }
 //# sourceMappingURL=PostResultSet.js.map
