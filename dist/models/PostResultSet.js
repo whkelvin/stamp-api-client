@@ -19,7 +19,6 @@ export function instanceOfPostResultSet(value) {
     var isInstance = true;
     isInstance = isInstance && "count" in value;
     isInstance = isInstance && "posts" in value;
-    isInstance = isInstance && "page" in value;
     isInstance = isInstance && "pageSize" in value;
     return isInstance;
 }
@@ -33,7 +32,6 @@ export function PostResultSetFromJSONTyped(json, ignoreDiscriminator) {
     return {
         'count': json['count'],
         'posts': (json['posts'].map(PostFromJSON)),
-        'page': json['page'],
         'pageSize': json['pageSize'],
     };
 }
@@ -47,7 +45,6 @@ export function PostResultSetToJSON(value) {
     return {
         'count': value.count,
         'posts': (value.posts.map(PostToJSON)),
-        'page': value.page,
         'pageSize': value.pageSize,
     };
 }

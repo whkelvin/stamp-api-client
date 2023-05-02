@@ -43,12 +43,6 @@ export interface PostResultSet {
      * @type {number}
      * @memberof PostResultSet
      */
-    page: number;
-    /**
-     * 
-     * @type {number}
-     * @memberof PostResultSet
-     */
     pageSize: number;
 }
 
@@ -59,7 +53,6 @@ export function instanceOfPostResultSet(value: object): boolean {
     let isInstance = true;
     isInstance = isInstance && "count" in value;
     isInstance = isInstance && "posts" in value;
-    isInstance = isInstance && "page" in value;
     isInstance = isInstance && "pageSize" in value;
 
     return isInstance;
@@ -77,7 +70,6 @@ export function PostResultSetFromJSONTyped(json: any, ignoreDiscriminator: boole
         
         'count': json['count'],
         'posts': ((json['posts'] as Array<any>).map(PostFromJSON)),
-        'page': json['page'],
         'pageSize': json['pageSize'],
     };
 }
@@ -93,7 +85,6 @@ export function PostResultSetToJSON(value?: PostResultSet | null): any {
         
         'count': value.count,
         'posts': ((value.posts as Array<any>).map(PostToJSON)),
-        'page': value.page,
         'pageSize': value.pageSize,
     };
 }

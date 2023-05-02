@@ -33,12 +33,6 @@ export interface PostResultSet {
      * @type {number}
      * @memberof PostResultSet
      */
-    page: number;
-    /**
-     *
-     * @type {number}
-     * @memberof PostResultSet
-     */
     pageSize: number;
 }
 /**
