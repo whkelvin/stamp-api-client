@@ -16,7 +16,7 @@ export interface CreatePostRequest {
 }
 export interface GetRecentPostsRequest {
     size?: number;
-    lastFetchItemId?: string;
+    lastFetchedItemId?: string;
 }
 /**
  *
