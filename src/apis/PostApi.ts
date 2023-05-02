@@ -34,7 +34,7 @@ export interface CreatePostRequest {
 
 export interface GetRecentPostsRequest {
     size?: number;
-    page?: number;
+    lastFetchItemId?: string;
 }
 
 /**
@@ -92,8 +92,8 @@ export class PostApi extends runtime.BaseAPI {
             queryParameters['size'] = requestParameters.size;
         }
 
-        if (requestParameters.page !== undefined) {
-            queryParameters['page'] = requestParameters.page;
+        if (requestParameters.lastFetchItemId !== undefined) {
+            queryParameters['lastFetchItemId'] = requestParameters.lastFetchItemId;
         }
 
         const headerParameters: runtime.HTTPHeaders = {};

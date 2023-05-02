@@ -137,8 +137,8 @@ var PostApi = /** @class */ (function (_super) {
                         if (requestParameters.size !== undefined) {
                             queryParameters['size'] = requestParameters.size;
                         }
-                        if (requestParameters.page !== undefined) {
-                            queryParameters['page'] = requestParameters.page;
+                        if (requestParameters.lastFetchItemId !== undefined) {
+                            queryParameters['lastFetchItemId'] = requestParameters.lastFetchItemId;
                         }
                         headerParameters = {};
                         return [4 /*yield*/, this.request({
