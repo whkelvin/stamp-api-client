@@ -63,114 +63,55 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 import * as runtime from '../runtime';
-import { PostFromJSON, PostPostRequestToJSON, PostResultSetFromJSON, } from '../models';
+import { LogInRequestToJSON, LogInResponseFromJSON, } from '../models';
 /**
  *
  */
-var PostApi = /** @class */ (function (_super) {
-    __extends(PostApi, _super);
-    function PostApi() {
+var AuthApi = /** @class */ (function (_super) {
+    __extends(AuthApi, _super);
+    function AuthApi() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     /**
-     * create a new post
-     * create a new post
+     * log in or sign up to stamp with an external auth provider, returns a jwt for accessing stamp api.
+     * log in or sign up to stamp with an external auth provider
      */
-    PostApi.prototype.createPostRaw = function (requestParameters, initOverrides) {
-        return __awaiter(this, void 0, void 0, function () {
-            var queryParameters, headerParameters, token, tokenString, response;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        if (requestParameters.postPostRequest === null || requestParameters.postPostRequest === undefined) {
-                            throw new runtime.RequiredError('postPostRequest', 'Required parameter requestParameters.postPostRequest was null or undefined when calling createPost.');
-                        }
-                        queryParameters = {};
-                        headerParameters = {};
-                        headerParameters['Content-Type'] = 'application/json';
-                        if (!(this.configuration && this.configuration.accessToken)) return [3 /*break*/, 2];
-                        token = this.configuration.accessToken;
-                        return [4 /*yield*/, token("jwt", [])];
-                    case 1:
-                        tokenString = _a.sent();
-                        if (tokenString) {
-                            headerParameters["Authorization"] = "Bearer ".concat(tokenString);
-                        }
-                        _a.label = 2;
-                    case 2: return [4 /*yield*/, this.request({
-                            path: "/post",
-                            method: 'POST',
-                            headers: headerParameters,
-                            query: queryParameters,
-                            body: PostPostRequestToJSON(requestParameters.postPostRequest),
-                        }, initOverrides)];
-                    case 3:
-                        response = _a.sent();
-                        return [2 /*return*/, new runtime.JSONApiResponse(response, function (jsonValue) { return PostFromJSON(jsonValue); })];
-                }
-            });
-        });
-    };
-    /**
-     * create a new post
-     * create a new post
-     */
-    PostApi.prototype.createPost = function (requestParameters, initOverrides) {
-        return __awaiter(this, void 0, void 0, function () {
-            var response;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.createPostRaw(requestParameters, initOverrides)];
-                    case 1:
-                        response = _a.sent();
-                        return [4 /*yield*/, response.value()];
-                    case 2: return [2 /*return*/, _a.sent()];
-                }
-            });
-        });
-    };
-    /**
-     * get a list of most recent posts
-     * get a list of most recent posts
-     */
-    PostApi.prototype.getRecentPostsRaw = function (requestParameters, initOverrides) {
+    AuthApi.prototype.logInRaw = function (requestParameters, initOverrides) {
         return __awaiter(this, void 0, void 0, function () {
             var queryParameters, headerParameters, response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
+                        if (requestParameters.logInRequest === null || requestParameters.logInRequest === undefined) {
+                            throw new runtime.RequiredError('logInRequest', 'Required parameter requestParameters.logInRequest was null or undefined when calling logIn.');
+                        }
                         queryParameters = {};
-                        if (requestParameters.size !== undefined) {
-                            queryParameters['size'] = requestParameters.size;
-                        }
-                        if (requestParameters.lastFetchedItemId !== undefined) {
-                            queryParameters['lastFetchedItemId'] = requestParameters.lastFetchedItemId;
-                        }
                         headerParameters = {};
+                        headerParameters['Content-Type'] = 'application/json';
                         return [4 /*yield*/, this.request({
-                                path: "/posts",
-                                method: 'GET',
+                                path: "/login",
+                                method: 'POST',
                                 headers: headerParameters,
                                 query: queryParameters,
+                                body: LogInRequestToJSON(requestParameters.logInRequest),
                             }, initOverrides)];
                     case 1:
                         response = _a.sent();
-                        return [2 /*return*/, new runtime.JSONApiResponse(response, function (jsonValue) { return PostResultSetFromJSON(jsonValue); })];
+                        return [2 /*return*/, new runtime.JSONApiResponse(response, function (jsonValue) { return LogInResponseFromJSON(jsonValue); })];
                 }
             });
         });
     };
     /**
-     * get a list of most recent posts
-     * get a list of most recent posts
+     * log in or sign up to stamp with an external auth provider, returns a jwt for accessing stamp api.
+     * log in or sign up to stamp with an external auth provider
      */
-    PostApi.prototype.getRecentPosts = function (requestParameters, initOverrides) {
-        if (requestParameters === void 0) { requestParameters = {}; }
+    AuthApi.prototype.logIn = function (requestParameters, initOverrides) {
         return __awaiter(this, void 0, void 0, function () {
             var response;
             return __generator(this, function (_a) {
                 switch (_a.label) {
-                    case 0: return [4 /*yield*/, this.getRecentPostsRaw(requestParameters, initOverrides)];
+                    case 0: return [4 /*yield*/, this.logInRaw(requestParameters, initOverrides)];
                     case 1:
                         response = _a.sent();
                         return [4 /*yield*/, response.value()];
@@ -179,7 +120,7 @@ var PostApi = /** @class */ (function (_super) {
             });
         });
     };
-    return PostApi;
+    return AuthApi;
 }(runtime.BaseAPI));
-export { PostApi };
-//# sourceMappingURL=PostApi.js.map
+export { AuthApi };
+//# sourceMappingURL=AuthApi.js.map
