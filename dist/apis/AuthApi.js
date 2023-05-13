@@ -63,7 +63,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 import * as runtime from '../runtime';
-import { LogInRequestToJSON, LogInResponseFromJSON, } from '../models';
+import { LogInRequestToJSON, LogInResponseFromJSON, RefreshTokenResponseFromJSON, } from '../models';
 /**
  *
  */
@@ -112,6 +112,58 @@ var AuthApi = /** @class */ (function (_super) {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.logInRaw(requestParameters, initOverrides)];
+                    case 1:
+                        response = _a.sent();
+                        return [4 /*yield*/, response.value()];
+                    case 2: return [2 /*return*/, _a.sent()];
+                }
+            });
+        });
+    };
+    /**
+     * exchange token in header for a new one
+     * exchange token in header for a new one
+     */
+    AuthApi.prototype.refreshTokenRaw = function (initOverrides) {
+        return __awaiter(this, void 0, void 0, function () {
+            var queryParameters, headerParameters, token, tokenString, response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        queryParameters = {};
+                        headerParameters = {};
+                        if (!(this.configuration && this.configuration.accessToken)) return [3 /*break*/, 2];
+                        token = this.configuration.accessToken;
+                        return [4 /*yield*/, token("jwt", [])];
+                    case 1:
+                        tokenString = _a.sent();
+                        if (tokenString) {
+                            headerParameters["Authorization"] = "Bearer ".concat(tokenString);
+                        }
+                        _a.label = 2;
+                    case 2: return [4 /*yield*/, this.request({
+                            path: "/refresh-token",
+                            method: 'POST',
+                            headers: headerParameters,
+                            query: queryParameters,
+                        }, initOverrides)];
+                    case 3:
+                        response = _a.sent();
+                        return [2 /*return*/, new runtime.JSONApiResponse(response, function (jsonValue) { return RefreshTokenResponseFromJSON(jsonValue); })];
+                }
+            });
+        });
+    };
+    /**
+     * exchange token in header for a new one
+     * exchange token in header for a new one
+     */
+    AuthApi.prototype.refreshToken = function (initOverrides) {
+        return __awaiter(this, void 0, void 0, function () {
+            var response;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.refreshTokenRaw(initOverrides)];
                     case 1:
                         response = _a.sent();
                         return [4 /*yield*/, response.value()];

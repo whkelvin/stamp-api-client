@@ -10,7 +10,7 @@
  * Do not edit the class manually.
  */
 import * as runtime from '../runtime';
-import type { LogInRequest, LogInResponse } from '../models';
+import type { LogInRequest, LogInResponse, RefreshTokenResponse } from '../models';
 export interface LogInOperationRequest {
     logInRequest: LogInRequest;
 }
@@ -28,4 +28,14 @@ export declare class AuthApi extends runtime.BaseAPI {
      * log in or sign up to stamp with an external auth provider
      */
     logIn(requestParameters: LogInOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LogInResponse>;
+    /**
+     * exchange token in header for a new one
+     * exchange token in header for a new one
+     */
+    refreshTokenRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<RefreshTokenResponse>>;
+    /**
+     * exchange token in header for a new one
+     * exchange token in header for a new one
+     */
+    refreshToken(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<RefreshTokenResponse>;
 }

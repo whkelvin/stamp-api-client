@@ -95,6 +95,25 @@ paths:
           description: Invalid Input
       security: []
 
+  /refresh-token:
+    post:
+      operationId: RefreshToken
+      tags:
+        - auth
+      summary: exchange token in header for a new one
+      description: exchange token in header for a new one
+      responses:
+        "200":
+          description: Refresh Sucessful
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RefreshTokenResponse"
+        "400":
+          description: Bad Request
+      security:
+        - jwt: []
+
 externalDocs:
   description: Find out more about Open API specification
   url: "https://swagger.io/specification/"
@@ -177,7 +196,13 @@ components:
       properties:
         jwt:
           type: string
-
+    RefreshTokenResponse:
+      type: object
+      required:
+        - jwt
+      properties:
+        jwt:
+          type: string
   securitySchemes:
     jwt:
       type: http

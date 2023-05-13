@@ -17,12 +17,15 @@ import * as runtime from '../runtime';
 import type {
   LogInRequest,
   LogInResponse,
+  RefreshTokenResponse,
 } from '../models';
 import {
     LogInRequestFromJSON,
     LogInRequestToJSON,
     LogInResponseFromJSON,
     LogInResponseToJSON,
+    RefreshTokenResponseFromJSON,
+    RefreshTokenResponseToJSON,
 } from '../models';
 
 export interface LogInOperationRequest {
@@ -66,6 +69,42 @@ export class AuthApi extends runtime.BaseAPI {
      */
     async logIn(requestParameters: LogInOperationRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<LogInResponse> {
         const response = await this.logInRaw(requestParameters, initOverrides);
+        return await response.value();
+    }
+
+    /**
+     * exchange token in header for a new one
+     * exchange token in header for a new one
+     */
+    async refreshTokenRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<RefreshTokenResponse>> {
+        const queryParameters: any = {};
+
+        const headerParameters: runtime.HTTPHeaders = {};
+
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("jwt", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
+        const response = await this.request({
+            path: `/refresh-token`,
+            method: 'POST',
+            headers: headerParameters,
+            query: queryParameters,
+        }, initOverrides);
+
+        return new runtime.JSONApiResponse(response, (jsonValue) => RefreshTokenResponseFromJSON(jsonValue));
+    }
+
+    /**
+     * exchange token in header for a new one
+     * exchange token in header for a new one
+     */
+    async refreshToken(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<RefreshTokenResponse> {
+        const response = await this.refreshTokenRaw(initOverrides);
         return await response.value();
     }
 

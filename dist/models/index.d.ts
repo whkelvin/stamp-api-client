@@ -3,3 +3,4 @@ export * from './LogInResponse';
 export * from './Post';
 export * from './PostPostRequest';
 export * from './PostResultSet';
+export * from './RefreshTokenResponse';
