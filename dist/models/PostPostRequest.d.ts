@@ -39,6 +39,12 @@ export interface PostPostRequest {
      * @memberof PostPostRequest
      */
     rootDomain: string;
+    /**
+     *
+     * @type {Array<string>}
+     * @memberof PostPostRequest
+     */
+    tags: Array<string>;
 }
 /**
  * Check if a given object implements the PostPostRequest interface.

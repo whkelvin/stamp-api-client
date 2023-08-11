@@ -55,6 +55,12 @@ export interface Post {
      * @memberof Post
      */
     rootDomain: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof Post
+     */
+    tags: Array<string>;
 }
 
 /**
@@ -68,6 +74,7 @@ export function instanceOfPost(value: object): boolean {
     isInstance = isInstance && "link" in value;
     isInstance = isInstance && "createdDate" in value;
     isInstance = isInstance && "rootDomain" in value;
+    isInstance = isInstance && "tags" in value;
 
     return isInstance;
 }
@@ -88,6 +95,7 @@ export function PostFromJSONTyped(json: any, ignoreDiscriminator: boolean): Post
         'link': json['link'],
         'createdDate': json['createdDate'],
         'rootDomain': json['rootDomain'],
+        'tags': json['tags'],
     };
 }
 
@@ -106,6 +114,7 @@ export function PostToJSON(value?: Post | null): any {
         'link': value.link,
         'createdDate': value.createdDate,
         'rootDomain': value.rootDomain,
+        'tags': value.tags,
     };
 }
 

@@ -20,6 +20,7 @@ export function instanceOfPostPostRequest(value) {
     isInstance = isInstance && "description" in value;
     isInstance = isInstance && "link" in value;
     isInstance = isInstance && "rootDomain" in value;
+    isInstance = isInstance && "tags" in value;
     return isInstance;
 }
 export function PostPostRequestFromJSON(json) {
@@ -34,6 +35,7 @@ export function PostPostRequestFromJSONTyped(json, ignoreDiscriminator) {
         'description': json['description'],
         'link': json['link'],
         'rootDomain': json['rootDomain'],
+        'tags': json['tags'],
     };
 }
 export function PostPostRequestToJSON(value) {
@@ -48,6 +50,7 @@ export function PostPostRequestToJSON(value) {
         'description': value.description,
         'link': value.link,
         'rootDomain': value.rootDomain,
+        'tags': value.tags,
     };
 }
 //# sourceMappingURL=PostPostRequest.js.map

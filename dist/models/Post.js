@@ -22,6 +22,7 @@ export function instanceOfPost(value) {
     isInstance = isInstance && "link" in value;
     isInstance = isInstance && "createdDate" in value;
     isInstance = isInstance && "rootDomain" in value;
+    isInstance = isInstance && "tags" in value;
     return isInstance;
 }
 export function PostFromJSON(json) {
@@ -38,6 +39,7 @@ export function PostFromJSONTyped(json, ignoreDiscriminator) {
         'link': json['link'],
         'createdDate': json['createdDate'],
         'rootDomain': json['rootDomain'],
+        'tags': json['tags'],
     };
 }
 export function PostToJSON(value) {
@@ -54,6 +56,7 @@ export function PostToJSON(value) {
         'link': value.link,
         'createdDate': value.createdDate,
         'rootDomain': value.rootDomain,
+        'tags': value.tags,
     };
 }
 //# sourceMappingURL=Post.js.map

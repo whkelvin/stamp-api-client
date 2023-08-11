@@ -127,6 +127,7 @@ components:
         - description
         - link
         - rootDomain
+        - tags
       properties:
         title:
           type: string
@@ -136,6 +137,10 @@ components:
           type: string
         rootDomain:
           type: string
+        tags:
+          type: array
+          items:
+            type: string
     Post:
       type: object
       required:
@@ -145,6 +150,7 @@ components:
         - link
         - createdDate
         - rootDomain
+        - tags
       properties:
         id:
           type: string
@@ -158,6 +164,10 @@ components:
           type: string
         rootDomain:
           type: string
+        tags:
+          type: array
+          items:
+            type: string
     PostResultSet:
       type: object
       required:

@@ -43,6 +43,12 @@ export interface PostPostRequest {
      * @memberof PostPostRequest
      */
     rootDomain: string;
+    /**
+     * 
+     * @type {Array<string>}
+     * @memberof PostPostRequest
+     */
+    tags: Array<string>;
 }
 
 /**
@@ -54,6 +60,7 @@ export function instanceOfPostPostRequest(value: object): boolean {
     isInstance = isInstance && "description" in value;
     isInstance = isInstance && "link" in value;
     isInstance = isInstance && "rootDomain" in value;
+    isInstance = isInstance && "tags" in value;
 
     return isInstance;
 }
@@ -72,6 +79,7 @@ export function PostPostRequestFromJSONTyped(json: any, ignoreDiscriminator: boo
         'description': json['description'],
         'link': json['link'],
         'rootDomain': json['rootDomain'],
+        'tags': json['tags'],
     };
 }
 
@@ -88,6 +96,7 @@ export function PostPostRequestToJSON(value?: PostPostRequest | null): any {
         'description': value.description,
         'link': value.link,
         'rootDomain': value.rootDomain,
+        'tags': value.tags,
     };
 }
 

@@ -51,6 +51,12 @@ export interface Post {
      * @memberof Post
      */
     rootDomain: string;
+    /**
+     *
+     * @type {Array<string>}
+     * @memberof Post
+     */
+    tags: Array<string>;
 }
 /**
  * Check if a given object implements the Post interface.
